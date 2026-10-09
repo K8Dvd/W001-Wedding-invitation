@@ -9,6 +9,16 @@
  * Set showPlaceholders = false before delivering to the customer.
  */
 
+// ============ WEDDING DATE: CHANGE THIS ONE LINE ============
+// Format: YYYY-MM-DDTHH:MM:SS+08:00 (+08:00 = Philippines time)
+// The countdown, the calendar (month + marked day), "Add to Google Calendar",
+// the long date and the short date (12.18.27) all update from this line.
+const WEDDING_DATE = "2027-12-18T16:00:00+08:00";
+const [Y, M, D] = WEDDING_DATE.slice(0, 10).split("-").map(Number);
+const utc = new Date(Date.UTC(Y, M - 1, D));
+const LONG_DATE = `${utc.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" })}, ${utc.toLocaleDateString("en-US", { month: "long", timeZone: "UTC" })} ${D}, ${Y}`;
+const SHORT_DATE = `${String(M).padStart(2, "0")}.${String(D).padStart(2, "0")}.${String(Y).slice(2)}`;
+
 export const data = {
   showPlaceholders: true,
 
@@ -17,9 +27,9 @@ export const data = {
     partnerOne: "Alex",
     partnerTwo: "Kate",
     displayName: "Alex & Kate",
-    date: "Saturday, December 18, 2027",
-    shortDate: "12.18.27",
-    countdownDate: "2027-12-18T16:00:00+08:00",
+    date: LONG_DATE, // auto from WEDDING_DATE
+    shortDate: SHORT_DATE, // auto from WEDDING_DATE
+    countdownDate: WEDDING_DATE,
     hashtag: "#AlexAndKate2027",
     groom: { name: "Alex", photo: 2 }, // portrait = photo-02.jpg
     bride: { name: "Kate", photo: 3 }, // portrait = photo-03.jpg
