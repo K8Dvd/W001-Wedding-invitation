@@ -454,3 +454,26 @@ input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--burg
   .kb img { animation: none; transform: scale(1.1); }
   .meet-fig { will-change: translate; }
 }
+
+/* ---------- OUR STORY: bigger corner flowers ----------
+   Nasa dulo ito ng file para ma-override ang ibang .fl rules.
+   Mas mataas ang specificity (.story > .fl.xx) kaya hindi apektado ang ibang sections. */
+.story > .fl.tl,
+.story > .fl.tr {
+  width: min(52vw, 300px);
+  top: -1%;
+}
+.story > .fl.tl { left: -6%; }
+.story > .fl.tr { right: -6%; }
+
+.story > .fl.bl,
+.story > .fl.br {
+  width: min(46vw, 260px);
+}
+.story > .fl.bl { left: -6%; }
+.story > .fl.br { right: -6%; }
+
+/* Para hindi matakpan ng flowers ang "Our Story" heading sa mobile */
+@media (max-width: 720px) {
+  .story { padding-top: clamp(9rem, 34vw, 12rem); }
+}
